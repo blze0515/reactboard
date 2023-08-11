@@ -60,7 +60,7 @@ public class SecurityConfiguration {
                     authorizeRequests.requestMatchers("/user/login").permitAll();
                     authorizeRequests.requestMatchers("/api/**").permitAll();
                     //이외의 요청은 인증된 사용자만 사용자만 사용가능
-                    authorizeRequests.anyRequest().permitAll();
+                    authorizeRequests.anyRequest().authenticated();
                 })
                 .addFilterAfter(jwtAuthenticationFilter, CorsFilter.class)
                 .build();
